@@ -1,0 +1,43 @@
+import { Button, VerticalBox, LineEdit } from "std-widgets.slint";
+
+
+export component MiVentana inherits Window {
+    property <string> name: "";
+    callback save-name(string) ;
+    background: #1f1f1f;
+    title: "NameTracker";
+    GridLayout {
+        padding: 50px;
+        spacing: 25px;
+        Row{
+            Text {
+                font-family: "Arial";
+                text: "Holaaaaaa";
+                color: white;
+                font-size: 24px;
+                horizontal-alignment: center;
+            }
+        }
+
+        Row{
+            name := LineEdit {
+                placeholder-text: "pon tu nombre";
+                horizontal-alignment: center;
+                height: 35px;
+
+            }
+
+        }
+
+        Row{
+            Button {
+                text: "Haz click para guardar tu nombre";
+                primary: true;
+                height: 35px;
+                clicked => {
+                    save-name(name.text)
+                }
+            }
+        }
+    }
+}
