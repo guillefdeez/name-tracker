@@ -5,9 +5,8 @@ use std::path::Path;
 use std::fs::OpenOptions;
 
 
-
 fn main() -> Result<(), slint::PlatformError> {
-  	let ui = MiVentana::new()?;
+	let ui = MiVentana::new()?;
 	
 	match Path::new("names.txt").try_exists(){
 		Ok(false)=> {
@@ -19,7 +18,6 @@ fn main() -> Result<(), slint::PlatformError> {
 					.expect("Error al escribir archivo");
 				file.write(b"\n").expect("Error al escribir al archivo");
 			});
-			
 		}
 		Ok(true)=>{
 			ui.on_save_name(move |string|{
@@ -32,11 +30,8 @@ fn main() -> Result<(), slint::PlatformError> {
 				file.write_all(name,).expect("Unable to write data");
 				file.write_all(b"\n").expect("Unable to write data");
 			});
-
 		}
 		Err(_)=>println!("Error al comprobar si el archivo existe")
-
 	};
-  	
-  	ui.run()
+	ui.run()
 }
